@@ -1,15 +1,13 @@
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { HomePages } from "./pages";
+import { Route, Routes } from "react-router-dom";
+import IndonesiaNews from "./pages/Indonesia";
 
 const Router = () => {
   return (
-    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePages />} />
+        <Route path="/" element={<IndonesiaNews />} />
       </Routes>
-    </BrowserRouter>
   );
 };
 function App() {
