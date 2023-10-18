@@ -1,3 +1,6 @@
 import HomePages from "./HomePages";
 
-export { HomePages };
+import { Programmer, Covid } from "./HomePages";
+import Navbar from "../components/molecules/navbar";
+
+export { HomePages, Navbar ,Programmer, Covid };

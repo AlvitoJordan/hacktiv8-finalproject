@@ -6,3 +6,46 @@
 * {
   font-family: "Poppins", sans-serif;
 }
+
+.borderr{
+  border-bottom: 4px solid rgba(255, 0, 0, 0);
+  position: relative;
+}
+.borderr_active{
+  border-bottom: 4px solid #78D6C6;
+  position: relative;
+
+}
+
+.borderr_active::after{
+  content: "";
+  position: absolute;
+  background-color: white;
+  width: 50%;
+  height: 10px;
+  right: 0 ;
+  bottom: -4px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .borderr_active {
+    background-color: #78D6C6;
+    border-bottom: none;
+    color: white;
+    border-radius: 6px;
+    margin: 0px 6px;
+    padding: 5px;
+    width: 100%;
+
+  }
+
+  .borderr_active::after{
+    content: "";
+    position: absolute;
+    background-color: transparent;
+    right: 0 ;
+    bottom: 0;
+
+  
+  }
+}
