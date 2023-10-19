@@ -20,7 +20,7 @@ const Card = () => {
                     <p className='text-sm text-text_color'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde accusamus mollitia fuga sapiente nam eius vel emo maiores asperiores porro neque consequuntur eligendi blanditiis?</p>
                     
                     <div className="flex flex-row justify-end gap-3 mt-6">
-                        <a href="" target="_blank" rel="noopener noreferrer" className='px-4 py-2 rounded-lg text-white_color bg-blue_color font-semibold'>
+                        <a href="#p" target="_blank" rel="noopener noreferrer" className='px-4 py-2 rounded-lg text-white_color bg-blue_color font-semibold'>
                             News Page
                         </a>
                         <p className='px-4 py-2 rounded-lg text-white_color bg-green_color font-semibold flex flex-row gap-3 justify-center items-center'>
@@ -42,7 +42,7 @@ const Card = () => {
                         <p className='text-sm text-text_color'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde accusamus mollitia fuga sapiente nam eius vel emo maiores asperiores porro neque consequuntur eligendi blanditiis?</p>
                     </div>
                     <div className="flex flex-row justify-end gap-3 mt-6 ">
-                        <a href="" target="_blank" rel="noopener noreferrer" className='px-4 py-2 rounded-lg text-white_color bg-blue_color font-semibold'>
+                        <a href="#a" target="_blank" rel="noopener noreferrer" className='px-4 py-2 rounded-lg text-white_color bg-blue_color font-semibold'>
                             News Page
                         </a>
                         <p className='px-4 py-2 rounded-lg text-white_color bg-green_color font-semibold flex flex-row gap-3 justify-center items-center'>
@@ -63,7 +63,7 @@ const Card = () => {
                     <p className='text-sm text-text_color'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde accusamus mollitia fuga sapiente nam eius vel emo maiores asperiores porro neque consequuntur eligendi blanditiis?</p>
                     
                     <div className="flex flex-row justify-end gap-3 mt-6">
-                        <a href="" target="_blank" rel="noopener noreferrer" className='px-4 py-2 rounded-lg text-white_color bg-blue_color font-semibold'>
+                        <a href="#R" target="_blank" rel="noopener noreferrer" className='px-4 py-2 rounded-lg text-white_color bg-blue_color font-semibold'>
                             News Page
                         </a>
                         <p className='px-4 py-2 rounded-lg border-[3px] border-blue_color text-blue_color bg-white_color font-semibold flex flex-row gap-3 justify-center items-center'>
