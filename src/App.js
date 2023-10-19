@@ -1,16 +1,15 @@
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Covid, HomePages, Navbar, Programmer } from "./pages";
+import Navbar from "./components/molecules/Navbar";
+import IndonesiaNews from "./pages/IndonesiaNews";
 
 const Router = () => {
   return (
-    <BrowserRouter >
-    <Navbar />
+    <BrowserRouter>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<HomePages />} />
-        <Route path="/programmer" element={<Programmer />} />
-        <Route path="/covid" element={<Covid />} />
+        <Route path="/" element={<IndonesiaNews />} />
       </Routes>
     </BrowserRouter>
   );
