@@ -19,7 +19,7 @@ const Navbar = () => {
           <ButtonCS type="buttonNormal" title="Search" href={""} className={"bg-blue_color text-white_color h-10 px-3 ml-4 max-[1000px]:ml-3 rounded-lg"} />
         </form>
         <div class="hidden  max-[1000px]:contents w-[20px] h-[20px]" onClick={() => setActive(!active)}>
-          {active ? <ICOpenBar /> : <ICCloseBar />}
+          {active ? <ICCloseBar /> : <ICOpenBar />}
         </div>
         <ul
           className={`${
