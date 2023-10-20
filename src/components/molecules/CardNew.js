@@ -9,7 +9,9 @@ const CardNew = ({ title, author, source, desc, img }) => {
           <TextShortener text={title} maxLength="60" />
         </h2>
         <div className="">
-          <img src={img} alt="nama" className="w-full h-[190px]  rounded-md mb-3 object-cover" />
+            {img ? (<img src={img} alt="nama" className="w-full h-[190px]  rounded-md mb-3 object-cover" />) : 
+                (<div className="w-full h-[190px] rounded-md mb-3 bg-imagebox_color"></div>)}
+          {/* <img src={img} alt="nama" className="w-full h-[190px]  rounded-md mb-3 object-cover" /> */}
           <p className="text-[#87B4FF] text-base mb-3">
             {author} | {source}
           </p>

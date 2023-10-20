@@ -13,7 +13,7 @@ const IndonesiaNews = () => {
 
   useEffect(() => {
     axios
-      .get(`https://newsapi.org/v2/everything?q=indonesia&apiKey=435f3b9e9edb45b68a597efd2fe796da`)
+      .get(`https://newsapi.org/v2/top-headlines?country=id&apiKey=353827dfec9148f8ab42adde79913cd7`)
       .then((response) => {
         setNews(response.data.articles);
         setLoading(false);
