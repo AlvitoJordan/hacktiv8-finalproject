@@ -1,47 +1,67 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CardNew from "../components/molecules/CardNew";
+import axios from "axios";
+import ReactPaginate from "react-paginate";
+import Skeleton from "../components/molecules/Skeleton";
 
 const IndonesiaNews = () => {
-  const data = [
-    {
-      id: 1,
-      title: "Harga BBM Naik",
-      author: "Rezal",
-      source: "Hacktiv",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae tenetur eos, rem odio modi, commodi illo adipisci veniam architecto sapiente ea magnam maiores exercitationem officiis consequatur similique nisi sequi at?",
-    },
-    {
-      id: 2,
-      title: "Harga BBM Naik banget sampe belum keluar coy",
-      author: "Rezal",
-      source: "Hacktiv",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae tenetur eos, rem odio modi, commodi illo adipisci veniam architecto sapiente ea magnam maiores exercitationem officiis consequatur similique nisi sequi at?",
-    },
-    {
-      id: 3,
-      title: "Harga BBM Naik",
-      author: "Rezal",
-      source: "Hacktiv",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae tenetur eos, rem odio modi, commodi illo adipisci veniam architecto sapiente ea magnam maiores exercitationem officiis consequatur similique nisi sequi at?",
-    },
-  ];
+  const [news, setNews] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const perPage = typeof window !== "undefined" && window.innerWidth < 768 ? 1 : 6;
+  const pageCount = Math.ceil(news.length / perPage);
+
+  useEffect(() => {
+    axios
+      .get(`https://newsapi.org/v2/everything?q=indonesia&apiKey=353827dfec9148f8ab42adde79913cd7`)
+      .then((response) => {
+        setNews(response.data.articles);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  const offset = currentPage * perPage;
+  const currentPageData = news.slice(offset, offset + perPage);
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
   return (
-    <div className='bg-bg_color px-[70px] max-[1000px]:px-[20px] h-auto justify-center items-center flex'>
-      <div className="max-w-[1800px] w-full h-full mx-auto flex justify-center relative items-center flex-col mt-8 mb-8">      
-        <h1 className="text-text_color text-5xl font-extrabold w-full text-center border-b-4 border-[#C8CDFF] border-opacity-50 pb-5 ">INDONESIA NEWS</h1>
+    <div>
+      <h1 className="text-text_color text-5xl font-extrabold w-full text-center border-b-4 border-[#C8CDFF] border-opacity-50 pb-5 mt-10">INDONESIA NEWS</h1>
+
+      <div className="container h-full mx-auto flex justify-center relative items-center flex-col mt-8 mb-8">
         <div className="flex flex-row flex-wrap justify-center items-start gap-5 w-full mt-6">
-          {data.map((item) => (
-            <CardNew
-              title={item.title}
-              img={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBM0CZGCN-Bl1O3IdDxuKWjr_CxhZLBQ5pwA&usqp=CAU"}
-              author={item.author}
-              source={item.source}
-              desc={item.desc}
-              key={item.id}
-            />
-          ))}
+          {loading ? (
+            <div className="flex space-x-5">
+              <Skeleton />
+              <Skeleton />
+              <Skeleton />
+            </div>
+          ) : (
+            <>
+              {currentPageData.map((item, key) => (
+                <CardNew title={item.title} img={item.urlToImage} author={item.author} source={item.source.name} desc={item.description} key={key} />
+              ))}
+            </>
+          )}
         </div>
       </div>
+      <ReactPaginate
+        previousLabel={"<"}
+        nextLabel={">"}
+        breakLabel={"..."}
+        pageCount={pageCount}
+        marginPagesDisplayed={1}
+        pageRangeDisplayed={2}
+        onPageChange={handlePageChange}
+        containerClassName={"pagination"}
+        activeClassName={"active bg-blue_color border-none text-white_color"}
+        className="flex justify-center space-x-5 mt-6 flex-wrap w-full"
+        previousClassName="flex justify-center items-center w-[40px] h-[40px] rounded-full font-semibold text-text_color border-2 border-gray_color"
+        nextClassName="border-2 border-gray_color border-gray-500 flex justify-center items-center w-[40px] h-[40px] rounded-full font-semibold text-text_color"
+        pageClassName="border-2 border-gray_color flex justify-center items-center w-[40px] h-[40px] rounded-full font-semibold text-text-black mb-4"
+      />
     </div>
   );
 };
