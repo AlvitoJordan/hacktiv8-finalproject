@@ -4,7 +4,6 @@ import { Skeleton, CardNew } from "../components/molecules";
 import { useDispatch, useSelector } from "react-redux";
 import { getAPIAct } from "../redux/fetch/Get";
 
-
 const ProgrammerNews = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const dispatch = useDispatch();
@@ -14,12 +13,11 @@ const ProgrammerNews = () => {
 
   useEffect(() => {
     fetchData();
-  });
+  }, []);
 
   const fetchData = async () => {
     try {
-      dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=programming&apiKey=353827dfec9148f8ab42adde79913cd7`));
-     
+      dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=programming&apiKey=b2d964d1de894b2196e5ca54f61bcaf4`));
     } catch (error) {
       console.log(error);
     }

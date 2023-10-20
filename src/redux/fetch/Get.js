@@ -9,6 +9,9 @@ export const getAPIAct = createAsyncThunk("get/api", async (url) => {
     console.log(error);
   }
 });
+export const resetLoading = createAsyncThunk("reset/loading", async () => {
+  return true;
+});
 
 export const fetchAPISlice = createSlice({
   name: "fetchAPI",
@@ -23,7 +26,7 @@ export const fetchAPISlice = createSlice({
         state.news = action.payload;
         state.loading = false;
       })
-      .addCase(getAPIAct.rejected, (state, action) => {
+      .addCase(resetLoading.fulfilled, (state, action) => {
         state.loading = true;
       });
   },

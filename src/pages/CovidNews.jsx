@@ -13,11 +13,11 @@ const CovidNews = () => {
 
   useEffect(() => {
     fetchData();
-  });
+  },[]);
 
   const fetchData = async () => {
     try {
-      dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=covid-19&apiKey=353827dfec9148f8ab42adde79913cd7`));
+      dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=covid-19&apiKey=b2d964d1de894b2196e5ca54f61bcaf4`));
     } catch (error) {
       console.log(error);
     }
