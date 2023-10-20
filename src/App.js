@@ -1,7 +1,7 @@
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navbar from "./components/molecules/navbar";
+import Navbar from "./components/molecules/Navbar";
 import IndonesiaNews from "./pages/IndonesiaNews";
 import CovidNews from "./pages/CovidNews";
 import ProgrammingNews from "./pages/Programming";

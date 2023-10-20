@@ -1,5 +1,5 @@
-import ICSave from "./save.png";
-import ICOpenBar from "./open-bar.svg";
-import ICCloseBar from "./close-bar.svg";
+import { ReactComponent as ICSave } from "./save.svg";
+import { ReactComponent as ICOpenBar } from "./open-bar.svg";
+import { ReactComponent as ICCloseBar } from "./close-bar.svg";
 
 export { ICSave, ICOpenBar, ICCloseBar };
