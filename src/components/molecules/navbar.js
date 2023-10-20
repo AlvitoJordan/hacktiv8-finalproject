@@ -30,13 +30,14 @@ const Navbar = () => {
         >
           <li className="h-full flex justify-center items-center borderr ">
             <Link to="/" className={pathname === "/" ? "borderr_active " : "w-full max-[1000px]:px-3"}>
+            
               Indonesia
             </Link>
           </li>
           <li className="h-full flex justify-center items-center borderr ">
             {" "}
-            <Link to="programming" className={pathname === "/programming" ? "borderr_active" : "w-full max-[1000px]:px-3"}>
-              Programming
+            <Link to="programming" className={pathname === "/programming" ? "borderr_active" : "w-full max-[1000px]:px-3 "}>
+                Programming
             </Link>
           </li>
           <li className="h-full flex justify-center items-center borderr ">
