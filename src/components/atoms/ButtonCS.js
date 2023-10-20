@@ -5,7 +5,7 @@ const ButtonCS = ({ type, title, href, className }) => {
   if (type === "buttonNormal")
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={`px-4 py-2 rounded-lg  font-semibold ${className}`}>
-        <p>{title}</p>
+        <span>{title}</span>
       </a>
     );
   if (type === "buttonWithIcon")
