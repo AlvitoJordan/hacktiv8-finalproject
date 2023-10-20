@@ -1,24 +1,37 @@
 import { Link, useLocation } from "react-router-dom";
-import React from "react";
-import ButtonCS from "../atoms/ButtonCS";
-import InputCS from "../atoms/InputCS";
+import React, { useEffect, useState } from "react";
+import { ButtonCS, InputCS } from "../atoms";
 import { ICCloseBar, ICOpenBar } from "../../assets";
 
 const Navbar = () => {
   const [active, setActive] = React.useState(false);
+  const [scrolling, setScrolling] = useState(false);
 
   const location = useLocation();
   const { pathname } = location;
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
 
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <nav className="bg-white_color px-[70px] max-[1000px]:px-[20px] shadow-box_item h-[90px] max-[1000px]:h-16 justify-center items-center flex ">
-      <div class="max-w-[1800px] w-full bg-white_color h-full mx-auto  flex justify-between relative items-center">
+    <nav className={`bg-white_color px-[70px] max-[1000px]:px-[20px]  h-[90px] max-[1000px]:h-16 justify-center items-center fixed z-10 w-full flex ${scrolling ? "bg-white bg-opacity-80 backdrop-blur-sm shadow-box_item" : ""} `}>
+      <div className="max-w-[1800px] w-full h-full mx-auto  flex justify-between relative items-center">
         <form action="" className="w-[50%] max-[1000px]:w-[90%] my-3 max-h-10">
           {/* <input type="text" className="border-2 border-gray_color  h-full py-2 w-[60%] max-[1000px]:w-[60%] rounded-lg active:border-b-text_color pl-3" placeholder="Search..." /> */}
           <InputCS type="search" placeholder="Search..." />
           <ButtonCS type="buttonNormal" title="Search" href={""} className={"bg-blue_color text-white_color h-10 px-3 ml-4 max-[1000px]:ml-3 rounded-lg"} />
         </form>
-        <div class="hidden  max-[1000px]:contents w-[20px] h-[20px]" onClick={() => setActive(!active)}>
+        <div className="hidden  max-[1000px]:contents w-[20px] h-[20px]" onClick={() => setActive(!active)}>
           {active ? <ICCloseBar /> : <ICOpenBar />}
         </div>
         <ul
@@ -30,14 +43,13 @@ const Navbar = () => {
         >
           <li className="h-full flex justify-center items-center borderr ">
             <Link to="/" className={pathname === "/" ? "borderr_active " : "w-full max-[1000px]:px-3"}>
-            
               Indonesia
             </Link>
           </li>
           <li className="h-full flex justify-center items-center borderr ">
             {" "}
             <Link to="programming" className={pathname === "/programming" ? "borderr_active" : "w-full max-[1000px]:px-3 "}>
-                Programming
+              Programming
             </Link>
           </li>
           <li className="h-full flex justify-center items-center borderr ">
