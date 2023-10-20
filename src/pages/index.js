@@ -1,4 +1,5 @@
-import { Programmer, Covid } from "./HomePages";
-import Navbar from "../components/molecules/Navbar";
+import CovidNews from "./CovidNews";
+import IndonesiaNews from "./IndonesiaNews";
+import ProgrammingNews from "./Programming";
 
-export { HomePages, Navbar ,Programmer, Covid };
+export { IndonesiaNews, CovidNews, ProgrammingNews };

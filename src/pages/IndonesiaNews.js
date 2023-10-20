@@ -27,7 +27,7 @@ const IndonesiaNews = () => {
   };
 
   return (
-    <div className="bg-bg_color px-[70px] max-[1000px]:px-[20px] h-auto justify-center items-center flex overflow-hidden">
+    <div className="bg-bg_color px-[70px] max-[1000px]:px-[20px] h-auto justify-center items-center flex overflow-hidden lg:pt-24 pt-14">
       <div className="max-w-[1800px] w-full h-full mx-auto flex justify-center relative items-center flex-col mt-8 mb-8">
         <h1 className="text-text_color text-5xl font-extrabold w-full text-center border-b-4 border-[#C8CDFF] border-opacity-50 pb-5 max-[1000px]:text-3xl">INDONESIA NEWS</h1>
         <div className="container h-full mx-auto flex justify-center relative items-center flex-col mt-8 mb-8">

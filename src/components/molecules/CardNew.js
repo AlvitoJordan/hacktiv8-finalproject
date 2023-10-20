@@ -1,6 +1,5 @@
 import React from "react";
-import ButtonCS from "../atoms/ButtonCS";
-import TextShortener from "../atoms/TextShortener";
+import { TextShortener, ButtonCS } from "../atoms";
 
 const CardNew = ({ title, author, source, desc, img }) => {
   return (
@@ -10,13 +9,12 @@ const CardNew = ({ title, author, source, desc, img }) => {
           <TextShortener text={title} maxLength="60" />
         </h2>
         <div className="">
-           <img src={img} alt="nama" className="w-full h-[190px]  rounded-md mb-3 object-cover" />
+          <img src={img} alt="nama" className="w-full h-[190px]  rounded-md mb-3 object-cover" />
           <p className="text-[#87B4FF] text-base mb-3">
             {author} | {source}
           </p>
           <p className="text-sm text-text_color">{desc}</p>
         </div>
-       
       </div>
 
       <div className="flex flex-row justify-end gap-3 mt-6">
