@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import React from "react";
 import ButtonCS from "../atoms/ButtonCS";
 import InputCS from "../atoms/InputCS";
+import { ICCloseBar, ICOpenBar } from "../../assets";
 
 const Navbar = () => {
   const [active, setActive] = React.useState(false);
@@ -14,23 +15,11 @@ const Navbar = () => {
       <div class="max-w-[1800px] w-full bg-white_color h-full mx-auto  flex justify-between relative items-center">
         <form action="" className="w-[50%] max-[1000px]:w-[90%] my-3 max-h-10">
           {/* <input type="text" className="border-2 border-gray_color  h-full py-2 w-[60%] max-[1000px]:w-[60%] rounded-lg active:border-b-text_color pl-3" placeholder="Search..." /> */}
-          <InputCS type="search" placeholder="Search..."/>
-          <ButtonCS type="buttonNormal" title="Search" href={""} className={"bg-blue_color text-white_color h-10 px-3 ml-4 max-[1000px]:ml-3 rounded-lg"}  />
+          <InputCS type="search" placeholder="Search..." />
+          <ButtonCS type="buttonNormal" title="Search" href={""} className={"bg-blue_color text-white_color h-10 px-3 ml-4 max-[1000px]:ml-3 rounded-lg"} />
         </form>
         <div class="hidden  max-[1000px]:contents w-[20px] h-[20px]" onClick={() => setActive(!active)}>
-          {active ? (
-            <svg xmlns="http://www.w3.org/2000/svg" className=" text-3xl h-full justify-center items-center transition-all" width="20" height="28" viewBox="0 0 27 28" fill="none">
-              <rect y="23.6274" width="23.4446" height="5" rx="2.5" transform="rotate(-45 0 23.6274)" fill="#4B4B4B" />
-              <rect x="22.5" y="0.964478" width="5" height="6.6583" rx="2.5" transform="rotate(45 22.5 0.964478)" fill="#4B4B4B" />
-              <rect x="3.53564" y="1" width="32" height="5" rx="2.5" transform="rotate(45 3.53564 1)" fill="#4B4B4B" />
-            </svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" className=" text-3xl h-full justify-center items-center transition-all" width="20" height="28" viewBox="0 0 32 28" fill="none">
-              <rect y="24" width="32" height="5" rx="2" fill="#4B4B4B" />
-              <rect y="12" width="32" height="5" rx="2" fill="#4B4B4B" />
-              <rect x="20" width="12" height="5" rx="2" fill="#4B4B4B" />
-            </svg>
-          )}
+          {active ? <ICOpenBar /> : <ICCloseBar />}
         </div>
         <ul
           className={`${
@@ -64,7 +53,6 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-
     </nav>
   );
 };
