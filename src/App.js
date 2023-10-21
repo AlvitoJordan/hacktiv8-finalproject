@@ -2,8 +2,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/molecules";
-import { CovidNews, IndonesiaNews, ProgrammingNews } from "./pages";
-import SearchNews from "./pages/SearchPage";
+import { CovidNews, IndonesiaNews, ProgrammingNews, SearchNews } from "./pages";
 
 const Router = () => {
   return (
