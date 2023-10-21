@@ -1,22 +1,25 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { ButtonCS, InputCS } from "../atoms";
 import { ICCloseBar, ICOpenBar } from "../../assets";
-import { useDispatch } from "react-redux";
-import { resetLoading } from "../../redux/fetch/Get";
 
 const Navbar = () => {
   const [active, setActive] = React.useState(false);
   const [scrolling, setScrolling] = useState(false);
-
+  const [searchValue, setSearchValue] = useState("")
   const location = useLocation();
-
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { pathname } = location;
-  const handleChangePage = () => {
-    dispatch(resetLoading());
+
+  const handleSearch = () => {
+    navigate(`/search/${searchValue}`);
+  }
+
+  const handleSearchChange = (event) => {
+    setSearchValue(event.target.value);
   };
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -36,8 +39,8 @@ const Navbar = () => {
       <div className="max-w-[1800px] w-full h-full mx-auto  flex justify-between relative items-center">
         <form action="" className="w-[50%] max-[1000px]:w-[90%] my-3 max-h-10">
           {/* <input type="text" className="border-2 border-gray_color  h-full py-2 w-[60%] max-[1000px]:w-[60%] rounded-lg active:border-b-text_color pl-3" placeholder="Search..." /> */}
-          <InputCS type="search" placeholder="Search..." />
-          <ButtonCS type="buttonNormal" title="Search" href={""} className={"bg-blue_color text-white_color h-10 px-3 ml-4 max-[1000px]:ml-3 rounded-lg"} />
+          <InputCS type="search" placeholder="Search..." onChange={handleSearchChange} value={searchValue} />
+          <ButtonCS type="searchButton" title="Search" onClick={handleSearch} className={"bg-blue_color text-white_color h-10 px-3 ml-4 max-[1000px]:ml-3 rounded-lg"}>Search</ButtonCS>
         </form>
         <div className="hidden  max-[1000px]:contents w-[20px] h-[20px]" onClick={() => setActive(!active)}>
           {active ? <ICCloseBar /> : <ICOpenBar />}
@@ -50,25 +53,25 @@ const Navbar = () => {
           } `}
         >
           <li className="h-full flex justify-center items-center borderr ">
-            <Link onClick={handleChangePage} to={"/"} className={pathname === "/" ? "borderr_active " : "w-full max-[1000px]:px-3"}>
+            <Link to="/" className={pathname === "/" ? "borderr_active " : "w-full max-[1000px]:px-3"}>
               Indonesia
             </Link>
           </li>
           <li className="h-full flex justify-center items-center borderr ">
             {" "}
-            <Link onClick={handleChangePage} to="programming" className={pathname === "/programming" ? "borderr_active" : "w-full max-[1000px]:px-3 "}>
+            <Link to="programming" className={pathname === "/programming" ? "borderr_active" : "w-full max-[1000px]:px-3 "}>
               Programming
             </Link>
           </li>
           <li className="h-full flex justify-center items-center borderr ">
             {" "}
-            <Link onClick={handleChangePage} to="covid" className={pathname === "/covid" ? "borderr_active" : "w-full max-[1000px]:px-3"}>
+            <Link to="covid" className={pathname === "/covid" ? "borderr_active" : "w-full max-[1000px]:px-3"}>
               COVID-19
             </Link>
           </li>
           <li className="h-full flex justify-center items-center borderr ">
             {" "}
-            <Link onClick={handleChangePage} to="saved" className={pathname === "/saved" ? "borderr_active" : "w-full max-[1000px]:px-3"}>
+            <Link to="saved" className={pathname === "/saved" ? "borderr_active" : "w-full max-[1000px]:px-3"}>
               Saved
             </Link>
           </li>

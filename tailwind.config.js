@@ -10,6 +10,7 @@ module.exports = {
         green_color: "#78D6C6",
         gray_color: "#B0B0B0",
         bg_color: "#F4F7FC",
+        imagebox_color: "#C4C4C4"
       },
       boxShadow: {
         box_item: "0px 3px 10px 0px rgba(129, 129, 129, 0.21)",

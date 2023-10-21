@@ -3,13 +3,16 @@ import ReactPaginate from "react-paginate";
 import { Skeleton, CardNew } from "../components/molecules";
 import { useDispatch, useSelector } from "react-redux";
 import { getAPIAct } from "../redux/fetch/Get";
+import { useParams } from "react-router-dom";
 
-const IndonesiaNews = () => {
+
+const SearchNews = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const dispatch = useDispatch();
   const { loading, news } = useSelector((state) => state.getAPI);
   const perPage = typeof window !== "undefined" && window.innerWidth < 768 ? 1 : 6;
   const pageCount = Math.ceil(news.length / perPage);
+  const { searchValue } = useParams();
 
   useEffect(() => {
     fetchData();
@@ -17,7 +20,7 @@ const IndonesiaNews = () => {
 
   const fetchData = async () => {
     try {
-      dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=indonesia&apiKey=b2d964d1de894b2196e5ca54f61bcaf4`));
+      dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=${searchValue}&apiKey=b2d964d1de894b2196e5ca54f61bcaf4`));
     } catch (error) {
       console.log(error);
     }
@@ -31,8 +34,7 @@ const IndonesiaNews = () => {
   return (
     <div className="bg-bg_color px-[70px] max-[1000px]:px-[20px] h-auto justify-center items-center flex lg:pt-24 pt-14">
       <div className="max-w-[1800px] w-full h-full mx-auto flex justify-center relative items-center flex-col mt-8 mb-8">
-        <h1 className="text-text_color text-5xl font-extrabold w-full text-center border-b-4 border-[#C8CDFF] border-opacity-50 pb-5 max-[1000px]:text-3xl">INDONESIA NEWS</h1>
-
+        <h1 className="text-text_color text-5xl font-extrabold w-full text-center border-b-4 border-[#C8CDFF] border-opacity-50 pb-5 max-[1000px]:text-3xl">{searchValue.toUpperCase()} NEWS</h1>
         <div className="container h-full mx-auto flex justify-center relative items-center flex-col mt-8 mb-8">
           <div className="flex flex-row flex-wrap justify-center items-start gap-5 w-full mt-6">
             {loading ? (
@@ -70,4 +72,4 @@ const IndonesiaNews = () => {
   );
 };
 
-export default IndonesiaNews;
+export default SearchNews;
