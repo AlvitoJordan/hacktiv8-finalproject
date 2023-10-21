@@ -13,14 +13,20 @@ const ButtonCS = ({ type, title, href, className, onClick }) => {
       return (
         <button className="px-4 py-2 rounded-lg border-2 border-blue_color text-blue_color  font-semibold flex flex-row gap-3 justify-center items-center" onClick={onClick}>
           <ICSaveBlue />
-          <p>Save</p>
+          <p>{title}</p>
+        </button>
+      );
+    case "searchButton":
+      return (
+        <button onClick={onClick} className={`px-4 py-2 rounded-lg  font-semibold ${className}`}>
+          <p>{title}</p>
         </button>
       );
     case "buttonWithIcon":
       return (
-        <button className="px-4 py-2 rounded-lg text-white_color bg-green_color font-semibold flex flex-row gap-3 justify-center items-center">
+        <button className="px-4 py-2 rounded-lg text-white_color bg-green_color font-semibold flex flex-row gap-3 justify-center items-center animate-fadeIn" onClick={onClick}>
           <ICSave />
-          <p>Save</p>
+          <p>{title}</p>
         </button>
       );
     default:

@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const InputCS = ({ type, placeholder}) => {
-    if (type === "search")
-      return (
-        <input type={type} className="border-2 border-gray_color max-h-10 h-full py-2 w-[60%] max-[1000px]:w-[60%] rounded-lg active:border-b-text_color pl-3" placeholder={placeholder} />
-      );
-   
-  };
+const InputCS = ({ type, placeholder, value, onChange }) => {
+  if (type === "search") return <input onChange={onChange} value={value} className="border-2  max-h-10 h-full py-2 w-[60%] max-[1000px]:w-[60%] rounded-lg  pl-3 outline-none focus:border-blue_color" placeholder={placeholder} />;
+};
 
-export default InputCS
+export default InputCS;

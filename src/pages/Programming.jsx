@@ -3,11 +3,14 @@ import ReactPaginate from "react-paginate";
 import { Skeleton, CardNew } from "../components/molecules";
 import { useDispatch, useSelector } from "react-redux";
 import { getAPIAct } from "../redux/fetch/Get";
+import { saveNews, unsaveNews } from "../redux/saved/NewsSaved";
 
-const ProgrammerNews = () => {
+const ProgrammingNews = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const dispatch = useDispatch();
   const { loading, news } = useSelector((state) => state.getAPI);
+  const { newsSaved } = useSelector((state) => state.savedNews);
+
   const perPage = typeof window !== "undefined" && window.innerWidth < 768 ? 1 : 6;
   const pageCount = Math.ceil(news.length / perPage);
 
@@ -27,6 +30,14 @@ const ProgrammerNews = () => {
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected);
   };
+  const handleSave = (selected) => {
+    const isAlreadySaved = newsSaved.some((item) => item.title === selected.title);
+    if (isAlreadySaved) {
+      dispatch(unsaveNews(selected));
+    } else {
+      dispatch(saveNews(selected));
+    }
+  };
 
   return (
     <div className="bg-bg_color px-[70px] max-[1000px]:px-[20px] h-auto justify-center items-center flex lg:pt-24 pt-14">
@@ -44,7 +55,17 @@ const ProgrammerNews = () => {
             ) : (
               <>
                 {currentPageData.map((item, key) => (
-                  <CardNew title={item.title} img={item.urlToImage} author={item.author} source={item.source.name} desc={item.description} key={key} />
+                  <CardNew
+                    title={item.title}
+                    img={item.urlToImage}
+                    author={item.author}
+                    source={item.source.name}
+                    desc={item.description}
+                    linkNews={item.url}
+                    onClick={() => handleSave(item)}
+                    isSaved={newsSaved.some((news) => news.title === item.title)}
+                    key={key}
+                  />
                 ))}
               </>
             )}
@@ -70,4 +91,4 @@ const ProgrammerNews = () => {
   );
 };
 
-export default ProgrammerNews;
+export default ProgrammingNews;
