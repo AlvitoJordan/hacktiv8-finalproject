@@ -3,6 +3,7 @@ import { store } from "./redux/store";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/molecules";
 import { CovidNews, IndonesiaNews, ProgrammingNews } from "./pages";
+import SearchNews from "./pages/SearchPage";
 
 const Router = () => {
   return (
@@ -12,6 +13,7 @@ const Router = () => {
         <Route path="/" element={<IndonesiaNews />} />
         <Route path="/covid" element={<CovidNews />} />
         <Route path="/programming" element={<ProgrammingNews />} />
+        <Route path="/search/:searchValue" element={<SearchNews />} />
       </Routes>
     </BrowserRouter>
   );
