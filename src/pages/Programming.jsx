@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from "react";
-import CardNew from "../components/molecules/CardNew";
-import axios from "axios";
 import ReactPaginate from "react-paginate";
-import Skeleton from "../components/molecules/Skeleton";
+import { Skeleton, CardNew } from "../components/molecules";
+import { useDispatch, useSelector } from "react-redux";
+import { getAPIAct } from "../redux/fetch/Get";
 
-const ProgrammingNews = () => {
-  const [news, setNews] = useState([]);
+const ProgrammerNews = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  const { loading, news } = useSelector((state) => state.getAPI);
   const perPage = typeof window !== "undefined" && window.innerWidth < 768 ? 1 : 6;
   const pageCount = Math.ceil(news.length / perPage);
 
   useEffect(() => {
-    axios
-      .get(`https://newsapi.org/v2/everything?q=programming&apiKey=353827dfec9148f8ab42adde79913cd7`)
-      .then((response) => {
-        setNews(response.data.articles);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
+    fetchData();
   }, []);
+
+  const fetchData = async () => {
+    try {
+      dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=programming&apiKey=b2d964d1de894b2196e5ca54f61bcaf4`));
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const offset = currentPage * perPage;
   const currentPageData = news.slice(offset, offset + perPage);
   const handlePageChange = ({ selected }) => {
@@ -28,16 +30,16 @@ const ProgrammingNews = () => {
 
   return (
     <div className="bg-bg_color px-[70px] max-[1000px]:px-[20px] h-auto justify-center items-center flex lg:pt-24 pt-14">
-      <div className="max-w-[1800px] w-full h-full mx-auto flex justify-center relative items-center flex-col mt-8 mb-8 ">
+      <div className="max-w-[1800px] w-full h-full mx-auto flex justify-center relative items-center flex-col mt-8 mb-8">
         <h1 className="text-text_color text-5xl font-extrabold w-full text-center border-b-4 border-[#C8CDFF] border-opacity-50 pb-5 max-[1000px]:text-3xl">PROGRAMMING NEWS</h1>
 
         <div className="container h-full mx-auto flex justify-center relative items-center flex-col mt-8 mb-8">
           <div className="flex flex-row flex-wrap justify-center items-start gap-5 w-full mt-6">
             {loading ? (
-              <div className="flex space-x-5">
+              <div className="flex lg:space-x-5">
                 <Skeleton />
-                <Skeleton />
-                <Skeleton />
+                <Skeleton className={"hidden md:block"} />
+                <Skeleton className={"hidden md:block"} />
               </div>
             ) : (
               <>
@@ -68,4 +70,4 @@ const ProgrammingNews = () => {
   );
 };
 
-export default ProgrammingNews;
+export default ProgrammerNews;

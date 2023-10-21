@@ -2,13 +2,21 @@ import { Link, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { ButtonCS, InputCS } from "../atoms";
 import { ICCloseBar, ICOpenBar } from "../../assets";
+import { useDispatch } from "react-redux";
+import { resetLoading } from "../../redux/fetch/Get";
 
 const Navbar = () => {
   const [active, setActive] = React.useState(false);
   const [scrolling, setScrolling] = useState(false);
 
   const location = useLocation();
+
+  const dispatch = useDispatch();
+
   const { pathname } = location;
+  const handleChangePage = () => {
+    dispatch(resetLoading());
+  };
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -42,25 +50,25 @@ const Navbar = () => {
           } `}
         >
           <li className="h-full flex justify-center items-center borderr ">
-            <Link to="/" className={pathname === "/" ? "borderr_active " : "w-full max-[1000px]:px-3"}>
+            <Link onClick={handleChangePage} to={"/"} className={pathname === "/" ? "borderr_active " : "w-full max-[1000px]:px-3"}>
               Indonesia
             </Link>
           </li>
           <li className="h-full flex justify-center items-center borderr ">
             {" "}
-            <Link to="programming" className={pathname === "/programming" ? "borderr_active" : "w-full max-[1000px]:px-3 "}>
+            <Link onClick={handleChangePage} to="programming" className={pathname === "/programming" ? "borderr_active" : "w-full max-[1000px]:px-3 "}>
               Programming
             </Link>
           </li>
           <li className="h-full flex justify-center items-center borderr ">
             {" "}
-            <Link to="covid" className={pathname === "/covid" ? "borderr_active" : "w-full max-[1000px]:px-3"}>
+            <Link onClick={handleChangePage} to="covid" className={pathname === "/covid" ? "borderr_active" : "w-full max-[1000px]:px-3"}>
               COVID-19
             </Link>
           </li>
           <li className="h-full flex justify-center items-center borderr ">
             {" "}
-            <Link to="saved" className={pathname === "/saved" ? "borderr_active" : "w-full max-[1000px]:px-3"}>
+            <Link onClick={handleChangePage} to="saved" className={pathname === "/saved" ? "borderr_active" : "w-full max-[1000px]:px-3"}>
               Saved
             </Link>
           </li>

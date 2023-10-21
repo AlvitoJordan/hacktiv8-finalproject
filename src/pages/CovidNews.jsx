@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from "react";
-import CardNew from "../components/molecules/CardNew";
-import axios from "axios";
 import ReactPaginate from "react-paginate";
-import Skeleton from "../components/molecules/Skeleton";
+import { Skeleton, CardNew } from "../components/molecules";
+import { useDispatch, useSelector } from "react-redux";
+import { getAPIAct } from "../redux/fetch/Get";
 
 const CovidNews = () => {
-  const [news, setNews] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  const { loading, news } = useSelector((state) => state.getAPI);
   const perPage = typeof window !== "undefined" && window.innerWidth < 768 ? 1 : 6;
   const pageCount = Math.ceil(news.length / perPage);
 
   useEffect(() => {
-    axios
-      .get(`https://newsapi.org/v2/everything?q=covid-19&apiKey=353827dfec9148f8ab42adde79913cd7`)
-      .then((response) => {
-        setNews(response.data.articles);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    fetchData();
+  },[]);
+
+  const fetchData = async () => {
+    try {
+      dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=covid-19&apiKey=b2d964d1de894b2196e5ca54f61bcaf4`));
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const offset = currentPage * perPage;
   const currentPageData = news.slice(offset, offset + perPage);
   const handlePageChange = ({ selected }) => {
