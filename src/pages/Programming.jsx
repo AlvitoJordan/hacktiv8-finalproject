@@ -20,7 +20,7 @@ const ProgrammingNews = () => {
 
   const fetchData = async () => {
     try {
-      dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=programming&apiKey=b2d964d1de894b2196e5ca54f61bcaf4`));
+      dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=programming&apiKey=986b58a706474d7db834e1090fba267f`));
     } catch (error) {
       console.log(error);
     }
