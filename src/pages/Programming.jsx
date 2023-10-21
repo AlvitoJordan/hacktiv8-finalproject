@@ -38,8 +38,8 @@ const ProgrammerNews = () => {
             {loading ? (
               <div className="flex lg:space-x-5">
                 <Skeleton />
-                <Skeleton className={"hidden md:block"} />
-                <Skeleton className={"hidden md:block"} />
+                <Skeleton className={"hidden lg:block"} />
+                <Skeleton className={"hidden lg:block"} />
               </div>
             ) : (
               <>

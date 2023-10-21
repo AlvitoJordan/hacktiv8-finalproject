@@ -1,7 +1,7 @@
 import React from "react";
 import { TextShortener, ButtonCS } from "../atoms";
 
-const CardNew = ({ title, author, source, desc, img }) => {
+const CardNew = ({ title, author, source, desc, img, linkNews, onClick }) => {
   return (
     <div className="max-w-[400px] w-full min-h-[600px] h-full flex flex-col justify-between shadow-box_item bg-white_color p-6 rounded-2xl">
       <div className="flex flex-col min-h-[450px] h-full">
@@ -18,8 +18,8 @@ const CardNew = ({ title, author, source, desc, img }) => {
       </div>
 
       <div className="flex flex-row justify-end gap-3 mt-6">
-        <ButtonCS type="buttonNormal" title="News Page" href={""} className={"bg-blue_color text-white_color"} />
-        <ButtonCS type="buttonWithIcon" title="Save" />
+        <ButtonCS type="buttonNormal" title="News Page" href={linkNews} className={"bg-blue_color text-white_color"} />
+        <ButtonCS type="buttonIconNoBackground" title="Save" onClick={onClick} />
       </div>
     </div>
   );
