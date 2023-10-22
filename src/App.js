@@ -1,7 +1,7 @@
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Navbar } from "./components/molecules";
+import { Footer, Navbar } from "./components/molecules";
 import { CovidNews, IndonesiaNews, ProgrammingNews, SavedNews, SearchNews } from "./pages";
 
 const Router = () => {
@@ -15,6 +15,7 @@ const Router = () => {
         <Route path="/saved" element={<SavedNews />} />
         <Route path="/search/:searchValue" element={<SearchNews />} />
       </Routes>
+      <Footer copyright="© 2023 Hacktiv8 . All Rights Reserved" text="MSIB Kampus Merdeka" />
     </BrowserRouter>
   );
 };
