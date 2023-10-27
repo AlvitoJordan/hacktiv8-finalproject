@@ -54,19 +54,29 @@ const CovidNews = () => {
               </div>
             ) : (
               <>
-                {currentPageData.map((item, key) => (
-                  <CardNew
-                    title={item.title}
-                    img={item.urlToImage}
-                    author={item.author}
-                    source={item.source.name}
-                    desc={item.description}
-                    linkNews={item.url}
-                    onClick={() => handleSave(item)}
-                    isSaved={newsSaved.some((news) => news.title === item.title)}
-                    key={key}
-                  />
-                ))}
+                {currentPageData.length > 0 ? (
+                  <>
+                    {currentPageData.map((item, key) => (
+                      <CardNew
+                        title={item.title}
+                        img={item.urlToImage}
+                        author={item.author}
+                        source={item.source.name}
+                        desc={item.description}
+                        linkNews={item.url}
+                        onClick={() => handleSave(item)}
+                        isSaved={newsSaved.some((news) => news.title === item.title)}
+                        key={key}
+                      />
+                    ))}
+                  </>
+                ) : (
+                  <div className="flex lg:space-x-5">
+                    <Skeleton />
+                    <Skeleton className={"hidden lg:block"} />
+                    <Skeleton className={"hidden lg:block"} />
+                  </div>
+                )}
               </>
             )}
           </div>
