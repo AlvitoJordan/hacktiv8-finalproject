@@ -46,7 +46,7 @@ const SearchNews = () => {
         <h1 className="text-text_color text-5xl font-extrabold w-full text-center border-b-4 border-[#C8CDFF] border-opacity-50 pb-5 max-[1000px]:text-3xl">{searchValue.toUpperCase()} NEWS</h1>
         <div className="container h-full mx-auto flex justify-center relative items-center flex-col mt-8 mb-8">
           <div className="flex flex-row flex-wrap justify-center items-start gap-5 w-full mt-6">
-            {loading && currentPageData.length > 0 ? (
+            {loading ? (
               <div className="flex lg:space-x-5">
                 <Skeleton />
                 <Skeleton className={"hidden lg:block"} />
