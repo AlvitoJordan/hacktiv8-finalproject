@@ -17,3 +17,17 @@ Anggota :
 ## Features
 1. Search => Digunakan untuk mencari topik berita. Fitur ini akan menampilkan semua berita sesuai dengan topik yang ingin dicari
 2. Pagination => Digunakan untuk membagi berita menjadi beberapa halaman terpisah
+
+## Installation
+1. Lakukan clone pada repositori ini 
+   ```sh
+   git clone https://github.com/AlvitoJordan/hacktiv8-finalproject.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Run program dengan
+   ```sh
+   npm start
+   ```
