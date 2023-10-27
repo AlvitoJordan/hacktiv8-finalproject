@@ -11,7 +11,7 @@ const SavedNews = () => {
   const { newsSaved } = useSelector((state) => state.savedNews);
 
   const perPage = typeof window !== "undefined" && window.innerWidth < 768 ? 1 : 6;
-  const pageCount = Math.ceil(newsSaved.length / perPage);
+  const pageCount = Math.ceil(news.length / perPage);
 
   const offset = currentPage * perPage;
   const currentPageData = newsSaved.slice(offset, offset + perPage);

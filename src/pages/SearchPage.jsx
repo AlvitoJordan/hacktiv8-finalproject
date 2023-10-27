@@ -12,7 +12,7 @@ const SearchNews = () => {
   const { loading, news } = useSelector((state) => state.getAPI);
   const { newsSaved } = useSelector((state) => state.savedNews);
   const perPage = typeof window !== "undefined" && window.innerWidth < 768 ? 1 : 6;
-  const pageCount = Math.ceil(news.length / perPage);
+  const pageCount = Math.ceil(news.length ? news.length : 0 / perPage);
   const { searchValue } = useParams();
 
   useEffect(() => {
