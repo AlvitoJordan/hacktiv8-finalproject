@@ -14,10 +14,15 @@ const ProgrammingNews = () => {
   const perPage = typeof window !== "undefined" && window.innerWidth < 768 ? 1 : 6;
   const pageCount = Math.ceil(news.length / perPage);
 
+  const currentDate = new Date();
+  const lastMonthDate = new Date(currentDate);
+  lastMonthDate.setMonth(currentDate.getMonth() - 1);
+  const formattedDate = `${lastMonthDate.getFullYear()}-${(lastMonthDate.getMonth() + 1).toString().padStart(2, '0')}-${lastMonthDate.getDate().toString().padStart(2, '0')}`;
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=programming&apiKey=986b58a706474d7db834e1090fba267f`));
+        dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=programming&from=${formattedDate}&apiKey=353827dfec9148f8ab42adde79913cd7`));
       } catch (error) {
         console.log(error);
       }
