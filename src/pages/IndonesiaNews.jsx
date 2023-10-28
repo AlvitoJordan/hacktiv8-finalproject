@@ -15,16 +15,16 @@ const IndonesiaNews = () => {
   const pageCount = Math.ceil(news.length / perPage);
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=indonesia&apiKey=353827dfec9148f8ab42adde79913cd7`));
+      } catch (error) {
+        console.log(error);
+      }
+    };
     fetchData();
   }, []);
-
-  const fetchData = async () => {
-    try {
-      dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=indonesia&apiKey=353827dfec9148f8ab42adde79913cd7`));
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  
   const offset = currentPage * perPage;
   const currentPageData = news.slice(offset, offset + perPage);
   const handlePageChange = ({ selected }) => {

@@ -4,9 +4,12 @@ import axios from "axios";
 export const getAPIAct = createAsyncThunk("get/api", async (url) => {
   try {
     const response = await axios.get(url);
-    return response.data.articles;
+    if (response) {
+      return response.data.articles;
+    }
   } catch (error) {
     console.log(error);
+    throw error;
   }
 });
 export const resetLoading = createAsyncThunk("reset/loading", async () => {

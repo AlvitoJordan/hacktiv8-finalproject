@@ -20,16 +20,16 @@ const ProgrammingNews = () => {
   const formattedDate = `${lastMonthDate.getFullYear()}-${(lastMonthDate.getMonth() + 1).toString().padStart(2, '0')}-${lastMonthDate.getDate().toString().padStart(2, '0')}`;
   
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=programming&from=${formattedDate}&apiKey=353827dfec9148f8ab42adde79913cd7`));
+      } catch (error) {
+        console.log(error);
+      }
+    };
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    try {
-      dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=programming&from=${formattedDate}&apiKey=353827dfec9148f8ab42adde79913cd7`));
-    } catch (error) {
-      console.log(error);
-    }
-  };
   const offset = currentPage * perPage;
   const currentPageData = news.slice(offset, offset + perPage);
   const handlePageChange = ({ selected }) => {

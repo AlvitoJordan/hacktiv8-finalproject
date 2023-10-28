@@ -16,16 +16,16 @@ const SearchNews = () => {
   const { searchValue } = useParams();
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=${searchValue}&apiKey=986b58a706474d7db834e1090fba267f`));
+      } catch (error) {
+        console.log(error);
+      }
+    };
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    try {
-      dispatch(getAPIAct(`https://newsapi.org/v2/everything?q=${searchValue}&apiKey=986b58a706474d7db834e1090fba267f`));
-    } catch (error) {
-      console.log(error);
-    }
-  };
   const offset = currentPage * perPage;
   const currentPageData = news.slice(offset, offset + perPage);
   const handlePageChange = ({ selected }) => {
